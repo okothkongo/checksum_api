@@ -23,6 +23,10 @@ defmodule ChecksumApi.Endpoint do
     send_resp(conn, 200, "All digits cleared")
   end
 
+  get "/checksum" do
+    send_resp(conn, 200, JSON.encode!(%{checksum: ChecksumApi.checksum()}))
+  end
+
   match _ do
     send_resp(conn, 404, "Unknown request")
   end
