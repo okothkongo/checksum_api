@@ -1,25 +1,10 @@
 defmodule ChecksumApi.Server do
   use GenServer
   alias ChecksumApi.Core
-  # Client
 
   def start_link({initial_state, server_name}) do
     GenServer.start_link(__MODULE__, initial_state, name: server_name)
   end
-
-  def add_digits(digits) do
-    GenServer.cast(:checksum_api, {:add_digits, digits})
-  end
-
-  def read() do
-    GenServer.call(:checksum_api, :read)
-  end
-
-  def clear_digits() do
-    GenServer.cast(:checksum_api, :clear_digits)
-  end
-
-  # Server
 
   def init(current_digits) do
     {:ok, current_digits}

@@ -16,32 +16,4 @@ defmodule ChecksumApi.Core do
   def clear_digits() do
     []
   end
-
-  @spec checksum(list(integer())) :: integer
-  def checksum(digits) do
-    digits
-    |> sum_of_odd_and_even()
-    |> total_sum()
-    |> rem(10)
-    |> case do
-      0 -> 0
-      rem -> 10 - rem
-    end
-  end
-
-  defp total_sum({odd, even}) do
-    odd + even * 3
-  end
-
-  defp sum_of_odd_and_even(digits) do
-    digits
-    |> Enum.with_index()
-    |> Enum.reduce({0, 0}, fn {value, index}, {odd, even} ->
-      if rem(index, 2) == 0 do
-        {odd, even + value}
-      else
-        {odd + value, even}
-      end
-    end)
-  end
 end

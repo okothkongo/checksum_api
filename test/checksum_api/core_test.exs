@@ -14,8 +14,4 @@ defmodule ChecksumApi.CoreTest do
   test "clear_digits/0 returns empty list" do
     assert Core.clear_digits() == []
   end
-
-  test "checksum/1 returns  checksum integer" do
-    assert Core.checksum([5, 4, 8, 9, 8, 5, 0, 3, 5, 4]) == 7
-  end
 end
