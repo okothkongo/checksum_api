@@ -18,6 +18,11 @@ defmodule ChecksumApi.Endpoint do
     |> add_digits_response()
   end
 
+  get "/clear" do
+    ChecksumApi.clear_digits()
+    send_resp(conn, 200, "All digits cleared")
+  end
+
   match _ do
     send_resp(conn, 404, "Unknown request")
   end
