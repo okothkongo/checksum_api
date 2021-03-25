@@ -9,7 +9,7 @@ defmodule ChecksumApi.Application do
   def start(_type, _args) do
     children = [
       # Starts a worker by calling: ChecksumApi.Worker.start_link(arg)
-      # {ChecksumApi.Worker, arg}
+      {ChecksumApi.Server, {ChecksumApi.Core.new(), :checksum_api}}
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
