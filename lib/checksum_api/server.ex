@@ -15,6 +15,10 @@ defmodule ChecksumApi.Server do
     GenServer.call(:checksum_api, :read)
   end
 
+  def clear_digits() do
+    GenServer.cast(:checksum_api, :clear_digits)
+  end
+
   # Server
 
   def init(current_digits) do
@@ -27,5 +31,9 @@ defmodule ChecksumApi.Server do
 
   def handle_cast({:add_digits, digits}, current_digits) do
     {:noreply, Core.add_digits(current_digits, digits)}
+  end
+
+  def handle_cast(:clear_digits, _current_digits) do
+    {:noreply, Core.clear_digits()}
   end
 end

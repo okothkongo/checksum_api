@@ -10,4 +10,7 @@ defmodule ChecksumApi.CoreTest do
   test "add_digit/2 appends given digits to exist digits" do
     assert Core.add_digits([2], 34) == [2, 3, 4]
   end
+  test "clear_digits/0 returns empty list" do
+     assert Core.clear_digits() == []
+  end
 end

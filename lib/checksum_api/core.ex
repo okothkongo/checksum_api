@@ -12,4 +12,8 @@ defmodule ChecksumApi.Core do
   def add_digits(previous_digits, digits_be_add) do
     previous_digits ++ Integer.digits(digits_be_add)
   end
+
+  def clear_digits() do
+    []
+  end
 end
